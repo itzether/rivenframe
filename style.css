@@ -169,6 +169,11 @@ td, th{
 
 
 @media (max-width: 650px){
+    .mainBtn {
+        width: 3em;
+        height: 3em;
+    }
+
     .mainBtn *{
         width: 80%;
         height: 80%;
