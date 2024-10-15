@@ -93,6 +93,7 @@ function filterTable(){
 }
 
 function colorRows(){
+    console.log("Coloring rows")
     let visibleRows = document.querySelectorAll('tbody tr:not(.displayOff)')
 
     for (let x = 0; x < visibleRows.length; x++){
@@ -112,11 +113,12 @@ function displayData(weapon) {
             element.classList.toggle('weapon-content')
         }
     }
+    (document.getElementById(weapon)).classList.toggle('expandedWeapon')
 }
 
 // Sorting system
+let sort_asc = true;
 table_headings.forEach((head, i) => {
-    let sort_asc = true;
     head.onclick = () => {
         table_headings.forEach(head => head.classList.remove('active'));
         head.classList.add('active');
@@ -133,7 +135,6 @@ table_headings.forEach((head, i) => {
     }
 })
 
-
 function sortTable(column, sort_asc) {
     [...table_rows].sort((a, b) => {
         let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
@@ -142,6 +143,14 @@ function sortTable(column, sort_asc) {
         return sort_asc ? ( first_row.localeCompare(second_row, undefined, {numeric: true, sensitivity: 'base'}) > 0 ? 1 : -1) : ( second_row.localeCompare(first_row, undefined, {numeric: true, sensitivity: 'base'}) < 0 ? -1 : 1);
     })
         .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+        colorRows();
+}
+
+// Filter tab
+function openFilters(){
+    table_headings.forEach(heading => {
+        heading.classList.toggle('filterListOn');
+    })
 }
 
 // Loader

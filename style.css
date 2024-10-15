@@ -12,7 +12,7 @@
 
 /* Util */
 
-.displayOff {
+.displayOff { /* For toggling table rows */
     display: none;
 }
 
@@ -47,7 +47,8 @@ input{
     align-items: center;
 
     width: 100%;
-    margin: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .searchengine *{
@@ -75,7 +76,7 @@ input{
     }
 }
 
-#searchBtn{
+.mainBtn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,11 +90,11 @@ input{
     transition: all 0.2s ease-in-out;
 }
 
-#searchBtn:hover{
+.mainBtn:hover{
     transform: scale(1.1);
 }
 
-#searchBtn *{
+.mainBtn *{
     width: 50%;
     height: 50%;
     filter: brightness(0) invert(1);
@@ -134,9 +135,68 @@ td, th{
     overflow-x: auto;
 }
 
+#filterBtn{
+    display: none;
+}
+
+.filterList{
+    display: none;
+    flex-direction: row;
+    white-space: nowrap;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.filterOption{
+    display: flex;
+    margin: 1em;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 2em;
+    width: 8em;
+    height: 3em;
+    padding-inline: 2em;
+
+    font-weight: bold;
+    color: var(--white-color);
+    background-color: var(--secondary-color);
+    border-style: none;
+    transition: all 0.2s ease-in-out;
+}
+
+
 @media (max-width: 650px){
+    table{
+        border-collapse: collapse;
+    }
+
     th{
         display: none;
+        transition-behavior: allow-discrete;
+        animation: grow 0.2s ease-in-out 1 both;
+    }
+
+    .filterListOn{
+        display: block;
+        width: unset;
+
+        animation: grow 0.2s ease-in-out 1;
+    }
+
+    @keyframes grow {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+      }
+
+    .weapon-name, .weapon-type{
+        width: unset;
     }
 
     td{
@@ -153,6 +213,20 @@ td, th{
 
     .weapon-content{
         display: none !important;
+    }
+
+    .expandedWeapon{
+        border: var(--accent-color);
+        border-style: solid;
+        border-width: 0.1em;
+    }
+
+    .searchengine{
+        margin-bottom: 0.2em;
+    }
+
+    #filterBtn{
+        display: flex;
     }
 }
 
