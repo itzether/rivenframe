@@ -58,7 +58,7 @@ input{
 
 #searchBar{
     width: 50%;
-    font-size: 2vh;
+    font-size: 1vw;
     padding: 1vh;
     padding-top: 2vh;
     padding-bottom: 1vh;
@@ -82,8 +82,8 @@ input{
     align-items: center;
 
     border-radius: 100%;
-    width: 4em;
-    height: 4em;
+    width: 4vh;
+    height: 4vh;
 
     background-color: var(--accent-color);
     border-style: none;
@@ -169,6 +169,15 @@ td, th{
 
 
 @media (max-width: 650px){
+    .mainBtn *{
+        width: 80%;
+        height: 80%;
+    }
+
+    #searchBar{
+        font-size: 3vw;
+    }
+
     table{
         border-collapse: collapse;
     }
