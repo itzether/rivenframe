@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivenframe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="loader"></div>
+        <div class="searchengine">
+            <input type="text" name="search" id="searchBar" autocomplete="off" placeholder="Search for a Riven">
+            <button onclick="filterTable()" id="searchBtn"><img id='searchBtnIcon' src="images/search.svg" draggable="false"  alt=""></button>
+        </div>
+
+        <div class="cards-container">
+            <table class="cards">
+                <thead class="cards-index" onload="displayRivens()">
+                    <tr onload="getTable();">
+                        <th class="weapon-name active">Weapon Name <span class="icon-arrow">&DownArrow;</span></th>
+                        <th class="weapon-type">Weapon Type <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Reroll <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Minimum <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Average <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Maximum <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Median <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Variation <span class="icon-arrow">&DownArrow;</span></th>
+                        <th>Popularity <span class="icon-arrow">&DownArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody class="cards-data"></tbody>
+            </table>
+        </div>
+
+        
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary-color: #272635;
+    --secondary-color: #303644;
+    --tertiary-color: #47484e;
+    --white-color: #fdfffc;
+    --accent-color: #710EAE;
+
+    font-family: Work Sans;
+}
+
+/* Util */
+
+.displayOff {
+    display: none;
+}
+
+/* General */
+
+body{
+    margin: 0;
+    padding: 0;
+    border-spacing: 0px;
+
+    background-color: var(--primary-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    font-family: Work Sans;
+}
+
+.wrapper{
+    width: min(80vw, 100% - 3rem);
+    margin-inline: auto;
+}
+
+.searchengine{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin: 1em;
+}
+
+.searchengine *{
+    margin-inline: 1em;
+}
+
+
+#searchBar{
+    width: 50%;
+    font-size: 2vh;
+    padding: 1vh;
+    padding-top: 2vh;
+    padding-bottom: 1vh;
+    border-radius: 0.5em;
+    padding-left: 1em;
+
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--white-color);
+}
+
+@media (max-width = 768px){
+    #searchBar{
+        font-size: 4vh;
+    }
+}
+
+#searchBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100%;
+    width: 4em;
+    height: 4em;
+
+    background-color: var(--accent-color);
+    border-style: none;
+    transition: all 0.2s ease-in-out;
+}
+
+#searchBtn:hover{
+    transform: scale(1.1);
+}
+
+#searchBtn *{
+    width: 50%;
+    height: 50%;
+    filter: brightness(0) invert(1);
+}
+
+table{
+    width: 100%; 
+
+    border-radius: 25%;
+}
+
+tr.oddRow { 
+    background-color: var(--secondary-color);
+}
+
+th{
+    background: var(--secondary-color); 
+    color: white; 
+    font-weight: bold;
+}
+
+td, th{
+    text-align: center;
+
+    margin: 1em;
+    padding: 1em;
+    width: 10%;
+
+    color: var(--white-color);
+}
+
+.weapon-name, .weapon-type{
+    width: 14%;
+}
+
+.cards-container{
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 650px){
+    th{
+        display: none;
+    }
+
+    td{
+        display: block;
+        width: unset;
+        text-align: left;
+    }
+
+    td::before{
+        content: attr(data-cell) ": ";
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    .weapon-content{
+        display: none !important;
+    }
+}
+
+thead th span.icon-arrow {
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    border: 1.4px solid transparent;
+    
+    text-align: center;
+    font-size: 1rem;
+    
+    margin: .5rem;
+    transition: .2s ease-in-out;
+}
+
+thead th span.icon-arrow:not(.active) {
+    display: none;
+}
+
+thead th:hover {
+    cursor: pointer;
+    border: var(--accent-color);
+    border-style: solid;
+    border-width: 0.001em;
+}
+
+thead th.active span.icon-arrow{
+    border: 1.4px solid var(--white-color);
+    display: inline-block;
+}
+
+thead th.active{
+    background-color: var(--accent-color);
+    border: var(--accent-color);
+    border-style: solid;
+    border-width: 0.001em;
+}
+
+thead th.dec.active span.icon-arrow{
+    transform: rotate(180deg);
+}
+
+thead th.active,tbody td.active {
+    color: var(--white-color);
+}
+
+/* Loader */
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--primary-color);
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+.loader-hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader::after{
+    content: "";
+    width: 4em;
+    height: 4em;
+    border: 1em solid var(--secondary-color);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: loading 0.8s ease infinite;
+}
+
+@keyframes loading {
+    from{
+        transform: rotate(0turn);
+    }
+
+    to{
+        transform: rotate(1turn);
+    }
+}
